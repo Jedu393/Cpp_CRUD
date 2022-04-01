@@ -54,11 +54,13 @@ auto EnterValidFileExtnFormat(std::string &enterName) -> std::string {
 
     //FIXME: first occurrence of ., h, t, m, and l in a string input - early return the string val
 
+    //FIXED file creation still proceeds even though the file extension is incorrect
+
     std::cin >> enterName;
 
     const std::string fileDotHtml = ".html"; //TODO:
     
-    const size_t fileDotHtmlFound = enterName.find_last_of(fileDotHtml);
+    const size_t fileDotHtmlFound = enterName.find(fileDotHtml); // changed into find() instead of find_last_of(), because find_last_of() only returns chars, and find() returns substrings
 
     const bool isDotHtml          = fileDotHtmlFound != std::string::npos;
 
